@@ -11,6 +11,7 @@ class NewLevel:
         self.list_of_coords = []
         self.list_of_obj = []
         self.removal = 0
+        self.porg = 30
 
     def get_click(self, coords, name_obj):
         coords = ((coords[0]) // self.cell_size, (coords[1]) // self.cell_size)

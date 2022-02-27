@@ -23,15 +23,16 @@ class MainWindow(QMainWindow, Ui_Form):
         self.NewLevelButton.clicked.connect(self.NewLevel)
 
     def levelMenu(self):
-        self.win = QTLevelM()
-        self.win.setObjectName("MainWindow")
-        self.win.setStyleSheet("#MainWindow{border-image:url(textures/background.jpg)}")
-        self.win.show()
+        self.win2 = QTLevelM()
+        self.win2.setObjectName("MainWindow")
+        self.win2.setStyleSheet("#MainWindow{border-image:url(textures/background.jpg)}")
+        self.win2.show()
         ex.hide()
 
     def NewLevel(self):
         self.showMinimized()
         StartCreation()
+        self.levelMenu()
 
 
 # чтобы видеть ошибки

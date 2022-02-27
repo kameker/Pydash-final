@@ -2,14 +2,14 @@ import pygame
 
 from CreationOfNewLevel import NewLevel
 from Square import clock
-from Generation import Generator
 from ObstacleForNewLevel import all_sprite
+from random import randint
 
 
 def StartCreation():
     background = pygame.image.load('textures/background.jpg')
-    size = (1300, 700)
-    work_zone = pygame.display.set_mode(size)
+    size = (1920, 1050)
+    work_zone = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     level_zone = NewLevel(work_zone, size[0], size[1])
     running = True
     flag_obj = False
@@ -23,7 +23,8 @@ def StartCreation():
                 if event.key == pygame.K_ESCAPE:
                     running = False
                 if event.key == pygame.K_s:
-                    level_zone.save_level(input("Название уровня: "))
+                    level_zone.save_level(f"Your Level {randint(-99999, 99999)}")
+                    running = False
                 if event.key == pygame.K_RIGHT:
                     level_zone.removal += 50
                     all_sprite.update(-50)

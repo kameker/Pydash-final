@@ -3,9 +3,11 @@ import sys
 
 from PyQt5.QtCore import QSize
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QMainWindow
 from ui.UILevelMenu import Ui_Form
 from FirstAssembly import StartLevel
+from QTStopGame import StopMenu
+from Obstacle import deaths
 
 
 # Создание главного стартового окна
@@ -42,19 +44,12 @@ class QTLevelM(QMainWindow, Ui_Form):
     def startLevel(self):
         self.showMinimized()
         StartLevel(self.levels[self.levelID], True)
+        win = StopMenu(deaths)
+        win.show()
+
+
 
 
 # чтобы видеть ошибки
 def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
-
-
-# запуск
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = QTLevelM()
-    ex.setObjectName("MainWindow")
-    ex.setStyleSheet("#MainWindow{border-image:url(textures/background.jpg)}")
-    ex.show()
-    sys.excepthook = except_hook
-    sys.exit(app.exec_())
